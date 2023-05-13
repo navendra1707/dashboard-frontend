@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from "react-redux";
+import IntensityCountry from "./components/IntensityCountry";
+import store from "./state/store";
+import GetCommonData from "./getCommonData";
+import { Stack } from "@mui/material";
+import LikelihoodRegion from "./components/LikelihoodRegion";
+import EndYearRelevance from "./components/EndYearRelevance";
+import AvgRelevance from "./components/AvgRelevance";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Navbar />
+      <Stack
+        direction={'row'}
+        gap={1}
+        alignItems={'center'}
+        justifyContent={'center'}
+        flexWrap={'wrap'}
+      >
+        <IntensityCountry />
+        <LikelihoodRegion />
+        <GetCommonData />
+        <EndYearRelevance />
+        <AvgRelevance />
+      </Stack>
+    </Provider>
   );
 }
 
